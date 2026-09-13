@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   BWCI CORE DESIGN TOKENS — v1.2.1 Locked Baseline
+   ========================================================================== */
+:root {
+  --bwci-color-brand-ink: #123039;
+  --bwci-color-brand-slate: #16323b;
+  --bwci-color-brand-teal: #1d4a54;
+
+  --bwci-color-accent-emerald: #12836b;
+  --bwci-color-accent-emerald-dark: #0d6e59;
+  --bwci-color-accent-gold: #b98f2d;
+  --bwci-color-accent-gold-dark: #9e7720;
+  --bwci-color-accent-blue: #3d5a80;
+
+  --bwci-color-surface-canvas: #ffffff;
+  --bwci-color-surface-subtle: #f7f9f8;
+  --bwci-color-surface-cloud: #eff3f1;
+  --bwci-color-surface-dark: #123039;
+
+  --bwci-color-text-primary: #123039;
+  --bwci-color-text-secondary: #42585e;
+  --bwci-color-text-muted: #6c8085;
+  --bwci-color-text-inverse: #ffffff;
+
+  --bwci-color-border-subtle: #e2e9e6;
+  --bwci-color-border-default: #d5e0dc;
+  --bwci-color-border-strong: #8a9e99;
+  --bwci-color-border-dashed: #8a9e99;
+
+  --bwci-status-operating-dot: #12836b;
+  --bwci-status-operating-text: #0d6e59;
+  --bwci-status-operating-border: #a3d9c9;
+  --bwci-status-operating-bg: #e8f5f1;
+
+  --bwci-status-dev-dot: #b98f2d;
+  --bwci-status-dev-text: #7d5b0f;
+  --bwci-status-dev-border: #e8c46b;
+  --bwci-status-dev-bg: #fdf8eb;
+
+  --bwci-status-proposed-dot: #6c8085;
+  --bwci-status-proposed-text: #384c51;
+  --bwci-status-proposed-border: #bdccd0;
+  --bwci-status-proposed-bg: #f0f4f5;
+
+  --bwci-focus-color: #12836b;
+  --bwci-focus-width: 2px;
+  --bwci-focus-offset: 2px;
+  --bwci-touch-target: 44px;
+
+  --bwci-font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --bwci-font-mono: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --bwci-font-serif: "Newsreader", Georgia, serif;
+
+  --bwci-motion-micro: 180ms cubic-bezier(0, 0, 0.2, 1);
+  --bwci-motion-component: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --bwci-motion-diagram: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  --bwci-motion-system: 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --font-serif: "Newsreader", Georgia, serif;
+
+  --color-ink: #123039;
+  --color-slate2: #16323b;
+  --color-teal: #1d4a54;
+  --color-emerald2: #12836b;
+  --color-emerald-dark: #0d6e59;
+  --color-gold: #b98f2d;
+  --color-gold-dark: #9e7720;
+  --color-capital: #3d5a80;
+
+  --color-canvas: #ffffff;
+  --color-subtle: #f7f9f8;
+  --color-cloud: #eff3f1;
+
+  --color-txt: #123039;
+  --color-txt2: #42585e;
+  --color-muted: #6c8085;
+
+  --color-line-subtle: #e2e9e6;
+  --color-line: #d5e0dc;
+  --color-line-strong: #8a9e99;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  margin: 0;
+  background: var(--bwci-color-surface-canvas);
+  color: var(--bwci-color-text-primary);
+  font-family: var(--bwci-font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.tnum {
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: var(--bwci-focus-width) solid var(--bwci-focus-color);
+  outline-offset: var(--bwci-focus-offset);
+  border-radius: 2px;
+}
+
+/* Scrollbars — restrained institutional treatment */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d5e0dc;
+  border: 3px solid #fff;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8a9e99;
+}
+
+.ascii {
+  font-family: var(--bwci-font-mono);
+  font-size: 11px;
+  line-height: 1.45;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+@keyframes bwci-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.anim-in {
+  animation: bwci-fade-up var(--bwci-motion-diagram) both;
+}
+
+@keyframes bwci-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.flow-dash {
+  stroke-dasharray: 6 6;
+  animation: bwci-dash 1.4s linear infinite;
+}
+
+@keyframes bwci-draw {
+  from {
+    stroke-dashoffset: var(--len, 400);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+mark.hit {
+  background: #fdf8eb;
+  color: #7d5b0f;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-full {
+    margin: 0 !important;
+    max-width: none !important;
+  }
+}
